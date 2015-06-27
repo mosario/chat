@@ -20,6 +20,7 @@
           %ul.nav.navbar-nav
             - if signed_in?
               %li.navbar-text= current_user
+              %li= link_to "Exit", session_path, method: :delete
               %li= link_to t(:users), users_path
     .container
       = yield
