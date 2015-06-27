@@ -18,5 +18,7 @@
           = link_to 'Chat', root_path, class: 'navbar-brand'
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
+            - if signed_in?
+              %li.navbar-text= current_user
     .container
       = yield

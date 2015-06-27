@@ -1,0 +1,6 @@
+= @session_form.errors.full_messages.inspect
+
+= simple_form_for @session_form, url: session_path do |f|
+	= f.input :email
+	= f.input :password
+	= f.button :submit
