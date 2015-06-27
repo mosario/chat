@@ -13,25 +13,25 @@ RSpec.describe 'session', type: :request do
 
     it 'sign in user' do
       post "/session", session_form: { email: user.email, password: user.password }
-      # expect(current_user).to eq(user)
+      expect(current_user).to eq(user)
       expect(response).to be_redirect
     end
 
     it 'not sign in user' do
       post "/session", session_form: { email: user.email, password: 'wrong password' }
-      # expect(current_user).to be_nil
+      expect(current_user).to be_nil
       expect(response).to be_success
     end
   end
 
-  # context 'destroy' do
-  #   let(:user) { create :user }
-  #   before(:each) { sign_in_user user }
+  context 'destroy' do
+    let(:user) { create :user }
+    before(:each) { sign_in user }
 
-  #   it 'not sign in user' do
-  #     delete "/session"
-  #     expect(current_user).to be_nil
-  #     expect(response).to be_redirect
-  #   end
-  # end
+    it 'not sign in user' do
+      delete "/session"
+      expect(current_user).to be_nil
+      expect(response).to be_redirect
+    end
+  end
 end
