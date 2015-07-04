@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
 	validates :email, presence: true
 
+	# has_many :messages
+
 	scope :without, ->(user) { where.not(id: user) }
 	
 	def to_s

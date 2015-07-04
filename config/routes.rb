@@ -2,9 +2,18 @@ Rails.application.routes.draw do
   scope module: :web do
     root to: 'welcome#index'
     resource :session
-    resources :users
+    resources :users do
+      scope module: :users do 
+        namespace :chat do
+          resources :messages
+        end
+      end
+    end
     resources :registrations
+
+
   end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
