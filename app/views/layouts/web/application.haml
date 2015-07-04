@@ -22,5 +22,8 @@
               %li.navbar-text= current_user
               %li= link_to "Exit", session_path, method: :delete
               %li= link_to t(:users), users_path
+            - if signed_out?
+              %li= link_to t(:log_in), new_session_path
+              %li= link_to t(:register), new_registration_path
     .container
       = yield
