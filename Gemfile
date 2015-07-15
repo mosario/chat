@@ -19,6 +19,8 @@ gem 'simple_form'
 
 gem 'bootstrap-sass'
 
+gem 'danthes'
+gem 'thin'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

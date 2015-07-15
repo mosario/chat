@@ -1,12 +1,12 @@
-= simple_form_for @new_message, url:user_chat_messages_path(resource_user)  do |f|
-	= f.input :content
-	= f.button :submit
+= subscribe_to "/messages/new/#{chat_room_name(current_user, resource_user)}"
+:javascript
+  Danthes.subscribe("/messages/new/#{chat_room_name(current_user, resource_user)}")
 
-%ul
-	- @messages.each do |message|
-		%li
-			= message.content
-			= message.receiver		
-			= message.sender
-		
+
+= simple_form_for @new_message, url:user_chat_messages_path(resource_user), remote:true  do |f|
+  = f.input :content
+  = f.button :submit
+
+%ul#chat 
+  = render @messages
 

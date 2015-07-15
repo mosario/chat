@@ -1,4 +1,6 @@
 class Web::Users::Chat::MessagesController < Web::Users::Chat::ApplicationController
+	layout false, only: :create
+
 	def index
 		@messages = Message.for_users(resource_user, current_user)
 		@new_message = Message.new
@@ -8,8 +10,11 @@ class Web::Users::Chat::MessagesController < Web::Users::Chat::ApplicationContro
 		@message = Message.new(message_params)
 		@message.sender = current_user
 		@message.receiver = resource_user
+		[current_user.id, resource_user.id].sort.join("-")
+		
 		@message.save!
-		redirect_to action: :index
+		# Danthes.publish_to "/messages/new", :chat_message => @message.content
+		# redirect_to action: :index
 	end
 
 	private

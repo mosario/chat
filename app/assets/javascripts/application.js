@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require danthes
 //= require_tree .
+
+
+Danthes.debug = true
